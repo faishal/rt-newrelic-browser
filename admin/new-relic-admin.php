@@ -34,8 +34,8 @@
 					settings_fields( 'relic_options_settings' );
 					foreach ( $relic_browser_list as $key => $relic_browser_data ) {
 						?>
-						<input type="radio" class="rtp-select-browser-radio" value="<?php echo $relic_browser_data['browser_id']; ?>" name="rtp-relic-browser-id" id="browser_<?php echo $relic_browser_data['browser_id']; ?>">
-						<label for="browser_<?php echo $relic_browser_data['browser_id']; ?>"><?php echo $relic_browser_data['browser_name']; ?></label><br>
+						<input type="radio" class="rtp-select-browser-radio" value="<?php echo esc_attr( $relic_browser_data['browser_id'] ); ?>" name="rtp-relic-browser-id" id="browser_<?php echo esc_attr( $relic_browser_data['browser_id'] ); ?>">
+						<label for="browser_<?php echo esc_attr( $relic_browser_data['browser_id'] ); ?>"><?php echo esc_attr( $relic_browser_data['browser_name'] ); ?></label><br>
 						<?php
 					}
 					?>
@@ -43,7 +43,7 @@
 					<input type="radio" class="rtp-select-browser-radio" id="create-browser-radio" value="create-account" name="rtp-relic-browser-id" >
 					<label for="create-browser-radio">Create a new application</label>
 				</div>
-				<form id="rtp-relic-create-browser" class="<?php echo $new_relic_form; ?>" action="options.php" method="POST" enctype="multipart/form-data">
+				<form id="rtp-relic-create-browser" class="<?php echo esc_attr( $new_relic_form ); ?>" action="options.php" method="POST" enctype="multipart/form-data">
 					<?php
 					settings_fields( 'relic_options_settings' );
 					?>
@@ -62,7 +62,7 @@
 						<input class="button-primary" type="submit" value="Submit" name="rtp-relic-get-browser-submit">
 					</p>
 				</form>
-				<form id="rtp-relic-select-browser" class="<?php echo $new_relic_form; ?>" action="options.php" method="POST" enctype="multipart/form-data">
+				<form id="rtp-relic-select-browser" class="<?php echo esc_attr( $new_relic_form ); ?>" action="options.php" method="POST" enctype="multipart/form-data">
 					<?php
 					settings_fields( 'relic_options_settings' );
 					?>
@@ -74,7 +74,7 @@
 				</form>
 			<?php }
 			?>
-			<form id="rtp-relic-get-browser" class="<?php echo $new_relic_form; ?>" action="options.php" method="POST" enctype="multipart/form-data">
+			<form id="rtp-relic-get-browser" class="<?php echo esc_attr( $new_relic_form ); ?>" action="options.php" method="POST" enctype="multipart/form-data">
 				<?php
 				settings_fields( 'relic_options_settings' );
 				?>
@@ -94,7 +94,7 @@
 					<input class="button-primary" type="submit" value="Submit" name="rtp-relic-get-browser-submit">
 				</p>
 			</form>
-			<form id="rtp-relic-add-account" class="<?php echo $new_relic_form; ?>" action="options.php" method="POST" enctype="multipart/form-data">
+			<form id="rtp-relic-add-account" class="<?php echo esc_attr( $new_relic_form ); ?>" action="options.php" method="POST" enctype="multipart/form-data">
 				<?php
 				settings_fields( 'relic_options_settings' );
 				?>
@@ -103,28 +103,28 @@
 						<tr>
 							<th scope="row"><label for="relic-account-name">Account Name<span class="description"> (required)</span></label></th>
 							<td>
-								<input type="text" name="relic-account-name" id="relic-account-name" class="regular-text" value="<?php echo $_SERVER['SERVER_NAME']; ?>">
+								<input type="text" name="relic-account-name" id="relic-account-name" class="regular-text" value="<?php echo esc_attr( $_SERVER['SERVER_NAME'] ); ?>">
 								<span id="relic-account-name_error" class="form_error"></span>
 							</td>
 						</tr>
 						<tr>
 							<th scope="row"><label for="relic-account-email">Email<span class="description"> (required)</span></label></th>
 							<td>
-								<input type="text" name="relic-account-email" id="relic-account-email" class="regular-text" value="<?php echo $current_user->user_email ?>">
+								<input type="text" name="relic-account-email" id="relic-account-email" class="regular-text" value="<?php echo esc_attr( $current_user->user_email ); ?>">
 								<span id="relic-account-email_error" class="form_error"></span>
 							</td>
 						</tr>
 						<tr>
 							<th scope="row"><label for="relic-first-name">First Name<span class="description"> (required)</span></label></th>
 							<td>
-								<input type="text" name="relic-first-name" id="relic-first-name" class="regular-text" value="<?php echo $current_user->user_firstname ?>">
+								<input type="text" name="relic-first-name" id="relic-first-name" class="regular-text" value="<?php echo esc_attr( $current_user->user_firstname ); ?>">
 								<span id="relic-first-name_error" class="form_error"></span>
 							</td>
 						</tr>
 						<tr>
 							<th scope="row"><label for="relic-last-name">Last Name<span class="description"> (required)</span></label></th>
 							<td>
-								<input type="text" name="relic-last-name" id="relic-last-name" class="regular-text" value="<?php echo $current_user->user_lastname ?>">
+								<input type="text" name="relic-last-name" id="relic-last-name" class="regular-text" value="<?php echo esc_attr( $current_user->user_lastname ) ?>">
 								<span id="relic-last-name_error" class="form_error"></span>
 							</td>
 						</tr>
@@ -151,8 +151,7 @@
 			?>
 			<div class="rtp-relic-settings-page-details">
 				<h3>Account details:</h3>
-				<?php ?>
-				<p><b><a href="<?php echo $relic_login_url ?>" target="_blank">Login to your New Relic Account.</a></b><?php echo $relic_email_check_msg; ?></p>
+				<p><b><a href="<?php echo esc_url( $relic_login_url ); ?>" target="_blank">Login to your New Relic Account.</a></b><?php echo $relic_email_check_msg; ?></p>
 				<p> <b>Account API Key</b> = <?php echo $relic_options_data['relic_api_key']; ?></p>
 				<p> <b>Browser App Name</b> = <?php echo $relic_browser_options_data['relic_app_name']; ?></p>
 				<p> <b>Browser Monitoring Key</b> = <?php echo $relic_browser_options_data['relic_app_key']; ?></p>
@@ -165,7 +164,7 @@
 				<?php
 				settings_fields( 'relic_options_settings' );
 				?>
-				<input type="hidden" value="<?php echo $relic_options_data['relic_id']; ?>" name="rtp-relic-account-id">
+				<input type="hidden" value="<?php echo esc_attr( $relic_options_data['relic_id'] ); ?>" name="rtp-relic-account-id">
 				<input type="hidden" value="rtp-remove-account" name="rtp-relic-form-name">
 				<p class="submit">
 					<input class="button-primary" type="submit" value="Remove" name="rtp-remove-account-submit" id="rtp-remove-account-submit">
